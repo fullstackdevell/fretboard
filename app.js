@@ -19,7 +19,7 @@ const doubleFretMarkPositions = [12, 24];
 const noteFlat = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"];
 const noteSharp = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 
-let accidentals = 'flats';
+let accidentals = 'sharps';
 
 const instrumentTuningPresets = {
     'Guitar': [7, 2, 10, 5, 0, 7],
