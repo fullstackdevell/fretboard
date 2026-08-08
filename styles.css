@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
 
-
 :root {
     --fretboard-height: 300;
     --number-of-strings: 6;
-
     --string-height: 10;
     --half-string-height: calc(var(--string-height) / 2);
 
     --string-top-position:
         calc(
-            var(--fretboard-height)
-            / var(--number-of-strings)
-            / 2
-            - var(--half-string-height)
+            var(--fretboard-height) /
+            var(--number-of-strings) /
+            2 -
+            var(--half-string-height)
         );
 
     --double-fretmark-position-1:
@@ -26,20 +24,15 @@
 }
 
 
-/* ==============================
-   RESET
-============================== */
+/* RESET */
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 
-/* ==============================
-   BODY
-============================== */
+/* BODY */
 
 body {
     background: #353535;
@@ -47,9 +40,7 @@ body {
 }
 
 
-/* ==============================
-   SETTINGS
-============================== */
+/* SETTINGS */
 
 .settings {
     display: flex;
@@ -58,58 +49,49 @@ body {
     padding: 20px;
     border-bottom: 1px solid #444;
     background-color: #282828;
-    gap: 15px;
 }
+
+
+/* SHARPS / FLATS */
 
 .accidental-selector {
     margin-left: 20px;
 }
 
+
+/* LABELS */
+
 label {
     margin: 0 10px;
-    color: #fff;
-}
-
-select {
-    padding: 5px;
 }
 
 
-/* ==============================
-   NUMBER INPUT
-============================== */
+/* NUMBER INPUT */
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
 
-/* ==============================
-   FRETBOARD
-============================== */
+/* FRETBOARD */
 
 .fretboard {
     display: flex;
     flex-direction: column;
 
-    background:
-        #be975b
-        url("./wood-pattern.png");
+    background: #be975b url(./wood-pattern.png);
 
     width: 100%;
     min-width: 1500px;
 
-    height:
-        calc(var(--fretboard-height) * 1px);
+    height: calc(var(--fretboard-height) * 1px);
 
     margin-top: 50px;
 }
 
 
-/* ==============================
-   STRINGS
-============================== */
+/* STRINGS */
 
 .string {
     width: 100%;
@@ -121,12 +103,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-/*
-   The actual guitar string.
-*/
+/* ACTUAL STRING */
 
 .string::before {
-    content: "";
+    content: '';
 
     width: 100%;
 
@@ -148,9 +128,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-/* ==============================
-   FRETS
-============================== */
+/* FRETS */
 
 .note-fret {
     display: flex;
@@ -174,9 +152,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-/*
-   Nut / open string position.
-*/
+/* OPEN STRING / NUT */
 
 .note-fret:first-child {
     background: #161717;
@@ -198,9 +174,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-/* ==============================
-   NOTE DOT
-============================== */
+/* NOTE DOT */
 
 .note-fret::before {
     content: attr(data-note);
@@ -213,27 +187,22 @@ input[type="number"]::-webkit-outer-spin-button {
     line-height: 33px;
     text-align: center;
 
-    background:
-        var(--note-color);
+    background: var(--note-color);
 
     z-index: 2;
 
     color: #eee;
 
-    opacity:
-        var(--noteDotOpacity);
+    opacity: var(--noteDotOpacity);
 }
 
 
-/* ==============================
-   FRET MARKERS
-============================== */
+/* FRET MARKERS */
 
 .fretmark::after,
 .double-fretmark::before,
 .double-fretmark::after {
-
-    content: "";
+    content: '';
 
     position: absolute;
 
@@ -247,12 +216,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .fretmark::after {
-
     top:
         calc(
-            var(--fretboard-height)
-            / 2
-            * 1px
+            var(--fretboard-height) / 2 * 1px
         );
 
     transform:
@@ -261,11 +227,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .double-fretmark::before {
-
     top:
         calc(
-            var(--double-fretmark-position-1)
-            * 1px
+            var(--double-fretmark-position-1) * 1px
         );
 
     transform:
@@ -274,11 +238,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .double-fretmark::after {
-
     top:
         calc(
-            var(--double-fretmark-position-2)
-            * 1px
+            var(--double-fretmark-position-2) * 1px
         );
 
     transform:
@@ -286,12 +248,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-/* ==============================
-   NOTE NAME SECTION
-============================== */
+/* NOTE NAMES */
 
 .note-name-section {
-
     width: 100%;
 
     color: #fff;
@@ -303,20 +262,15 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
 
     justify-content: center;
-
-    flex-wrap: wrap;
 }
 
 
 .note-name-section span {
-
     padding: 10px;
-
     cursor: pointer;
 }
 
 
 .note-name-section span:hover {
-
     color: #00baba;
 }
