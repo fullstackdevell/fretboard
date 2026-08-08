@@ -1,145 +1,324 @@
+```css
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
 
 
 :root {
     --fretboard-height: 300;
     --number-of-strings: 6;
+
     --string-height: 10;
     --half-string-height: calc(var(--string-height) / 2);
-    --string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
-    --double--fretmark-position-1: calc(var(--fretboard-height)* 0.25);
-    --double--fretmark-position-2: calc(var(--fretboard-height)* 0.75);
+
+    --string-top-position:
+        calc(
+            var(--fretboard-height)
+            / var(--number-of-strings)
+            / 2
+            - var(--half-string-height)
+        );
+
+    --double-fretmark-position-1:
+        calc(var(--fretboard-height) * 0.25);
+
+    --double-fretmark-position-2:
+        calc(var(--fretboard-height) * 0.75);
+
     --noteDotOpacity: 0;
 }
+
+
+/* ==============================
+   RESET
+============================== */
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+
+/* ==============================
+   BODY
+============================== */
 
 body {
     background: #353535;
     font-family: Lato, sans-serif;
 }
 
+
+/* ==============================
+   SETTINGS
+============================== */
+
 .settings {
     display: flex;
+    align-items: center;
     color: #fff;
     padding: 20px;
     border-bottom: 1px solid #444;
     background-color: #282828;
+    gap: 15px;
 }
 
 .accidental-selector {
     margin-left: 20px;
 }
 
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+label {
+    margin: 0 10px;
+    color: #fff;
+}
+
+select {
+    padding: 5px;
+}
+
+
+/* ==============================
+   NUMBER INPUT
+============================== */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
-label {
-    margin: 0 10px;
-}
+
+/* ==============================
+   FRETBOARD
+============================== */
 
 .fretboard {
     display: flex;
     flex-direction: column;
-    background: #be975b url(./wood-pattern.png);
+
+    background:
+        #be975b
+        url("./wood-pattern.png");
+
     width: 100%;
     min-width: 1500px;
-    height: calc(var(--fretboard-height) * 1px);
+
+    height:
+        calc(var(--fretboard-height) * 1px);
+
     margin-top: 50px;
 }
+
+
+/* ==============================
+   STRINGS
+============================== */
 
 .string {
     width: 100%;
     height: 100%;
+
     display: flex;
+
     position: relative;
 }
 
-.string:before {
-    content: '';
+
+/*
+   The actual guitar string.
+*/
+
+.string::before {
+    content: "";
+
     width: 100%;
-    height: calc(var(--string-height) * 1px);
-    background: linear-gradient(#eee, #999);
-    box-shadow: 76px 3px 10px #806233;
+
+    height:
+        calc(var(--string-height) * 1px);
+
+    background:
+        linear-gradient(#eee, #999);
+
+    box-shadow:
+        76px 3px 10px #806233;
+
     z-index: 1;
+
     position: absolute;
-    top: calc(var(--string-top-position) * 1px);
+
+    top:
+        calc(var(--string-top-position) * 1px);
 }
+
+
+/* ==============================
+   FRETS
+============================== */
 
 .note-fret {
     display: flex;
+
     flex: 1;
+
     border-right: 10px solid;
-    border-image: linear-gradient(to left, #777, #bbb, #777) 1 100%;
+
+    border-image:
+        linear-gradient(
+            to left,
+            #777,
+            #bbb,
+            #777
+        ) 1 100%;
+
     justify-content: center;
     align-items: center;
+
     position: relative;
 }
 
+
+/*
+   Nut / open string position.
+*/
+
 .note-fret:first-child {
     background: #161717;
+
     min-width: 76px;
+
     border-right: 12px solid;
+
     flex-grow: 0;
     flex-shrink: 0;
-    border-image: linear-gradient(to left, #bbb, #fff, #bbb) 1 100%;
+
+    border-image:
+        linear-gradient(
+            to left,
+            #bbb,
+            #fff,
+            #bbb
+        ) 1 100%;
 }
+
+
+/* ==============================
+   NOTE DOT
+============================== */
 
 .note-fret::before {
     content: attr(data-note);
+
     width: 33px;
     height: 33px;
+
     border-radius: 50%;
+
     line-height: 33px;
     text-align: center;
-    background: var(--note-color);
+
+    background:
+        var(--note-color);
+
     z-index: 2;
+
     color: #eee;
-    opacity: var(--noteDotOpacity);
+
+    opacity:
+        var(--noteDotOpacity);
 }
 
-.fretmark::after, .double-fretmark::before, .double-fretmark::after {
-    content: '';
+
+/* ==============================
+   FRET MARKERS
+============================== */
+
+.fretmark::after,
+.double-fretmark::before,
+.double-fretmark::after {
+
+    content: "";
+
     position: absolute;
+
     height: 20px;
     width: 20px;
+
     border-radius: 50%;
+
     background: #806233;
 }
 
+
 .fretmark::after {
-    top: calc(var(--fretboard-height) / 2 * 1px);
-    transform: translate(0, -50%);
+
+    top:
+        calc(
+            var(--fretboard-height)
+            / 2
+            * 1px
+        );
+
+    transform:
+        translate(0, -50%);
 }
+
 
 .double-fretmark::before {
-    top: calc(var(--double--fretmark-position-1) * 1px);
-    transform: translate(-140%, -50%);
+
+    top:
+        calc(
+            var(--double-fretmark-position-1)
+            * 1px
+        );
+
+    transform:
+        translate(-140%, -50%);
 }
+
 
 .double-fretmark::after {
-    top: calc(var(--double--fretmark-position-2) * 1px);
-    transform: translate(-140%, -50%);
+
+    top:
+        calc(
+            var(--double-fretmark-position-2)
+            * 1px
+        );
+
+    transform:
+        translate(-140%, -50%);
 }
+
+
+/* ==============================
+   NOTE NAME SECTION
+============================== */
 
 .note-name-section {
+
     width: 100%;
+
     color: #fff;
+
     font-weight: 300;
+
     font-size: 2em;
+
     display: flex;
+
     justify-content: center;
+
+    flex-wrap: wrap;
 }
 
+
 .note-name-section span {
+
     padding: 10px;
+
     cursor: pointer;
 }
 
+
 .note-name-section span:hover {
+
     color: #00baba;
 }
+```
