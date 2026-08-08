@@ -13,58 +13,38 @@
 
     <h1>Fretboard</h1>
 
-    <div class="controls">
+    <div class="settings controls">
+                    
+                    <label for="instrument-selector">Instrument:</label>
+                    <select id="instrument-selector"></select>
 
-        <!-- Instrument -->
-        <label for="instrument-selector">
-            Instrument:
-        </label>
+                    <label for="number-of-frets">Number of frets:</label>
+                    <select id="number-of-frets">
+                        <option value="12">12</option>
+                        <option value="15">15</option>
+                        <option value="20" selected>20</option>
+                        <option value="21">21</option>
+                        <option value="24">24</option>
+                    </select>
 
-        <select id="instrument-selector">
-        </select>
+                    <div class="accidental-selector">
+                        <span>Accidentals:</span>
+                        <label>
+                            <input type="radio" name="accidentals" class="acc-select" value="sharps" checked>
+                            Sharps ♯
+                        </label>
+                        <label>
+                            <input type="radio" name="accidentals" class="acc-select" value="flats">
+                            Flats ♭
+                        </label>
+                    </div>
 
+                    <label for="show-all-notes">Show all notes:</label>
+                    <input type="checkbox" id="show-all-notes">
 
-        <!-- Number of frets -->
-        <label for="number-of-frets">
-            Number of frets:
-        </label>
-
-        <select id="number-of-frets">
-            <option value="12">12</option>
-            <option value="15">15</option>
-            <option value="20" selected>20</option>
-            <option value="21">21</option>
-            <option value="24">24</option>
-        </select>
-
-
-        <!-- Sharps / Flats -->
-        <div class="accidental-selector">
-
-            <span>Accidentals:</span>
-
-            <label>
-                <input
-                    type="radio"
-                    name="accidentals"
-                    class="acc-select"
-                    value="sharps"
-                    checked
-                >
-                Sharps ♯
-            </label>
-
-            <label>
-                <input
-                    type="radio"
-                    name="accidentals"
-                    class="acc-select"
-                    value="flats"
-                >
-                Flats ♭
-            </label>
-
-        </div>
+                    <label for="show-multiple-notes">Show multiple notes:</label>
+                    <input type="checkbox" id="show-multiple-notes">
+                </div>
 
 
         <!-- Show all notes -->
